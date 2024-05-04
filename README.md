@@ -114,7 +114,7 @@ Listo con esto podríamos levantar el proyecto y debe funcionar. Hay que recorda
 `ng s mf-shell`
 `ng s mf-shopping`
 
-## Crear librerias
+## 5. Crear librerias
 Permite compartir entre diferentes partes de tu aplicación Angular. Para realizar un canal de comunicación trabajamos con servicios.
 
 `ng g library commons-lib`
@@ -141,4 +141,18 @@ Ir a la raiz de la aplicación y en el `tsconfig.json` agregamos la librería qu
 En cada mf que quiera usar esta librería debo instanciarla en el fichero `webpack.config.js`
 `sharedMappings: [ "@coomons-lib" ]`
 Esto se hace para que la librería de angular arquitect pueda generar una instancia de la descarga e inyectarla en cada uno de los mf
+
+## 6. Despliegue de multiples proyectos
+``npm i npm-run-all``
+
+Ir al `package.json` y añadir nuevos scripts
+
+``
+"mf-shell": "ng s mf-shell",
+"mf-shopping": "ng s mf-shopping",
+"mf-payment": "ng s mf-payment",
+"all": "npm-run-all --parallel mf-payment mf-shopping mf-shell "
+``
+
+Ejecutar `npm run all`
 
