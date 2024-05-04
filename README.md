@@ -148,9 +148,9 @@ Esto se hace para que la librería de angular arquitect pueda generar una instan
 Ir al `package.json` y añadir nuevos scripts
 
 ``
-"mf-shell": "ng s mf-shell",
-"mf-shopping": "ng s mf-shopping",
-"mf-payment": "ng s mf-payment",
+"mf-shell": "ng s mf-shell", <br>
+"mf-shopping": "ng s mf-shopping", <br>
+"mf-payment": "ng s mf-payment", <br>
 "all": "npm-run-all --parallel mf-payment mf-shopping mf-shell "
 ``
 
