@@ -11,8 +11,8 @@ Microfrontend: Pequeños proyectos que van a representar parte de la lógica del
 
 
 ## ¿Cómo puedo construir un Micro Frontend ?
-Siggle-SPA
-webpack 5 Module Federation: plugin que permite la carga de partes de un aplicación compilada por separado. Permite a la aplicación de angular cargar módulos de otra aplicación en tiempo de ejecución. Estos módulos pueden ser desarrollados, probados y desplegados de forma independiente para luego integrarlos.
+* Siggle-SPA
+* webpack 5 Module Federation: plugin que permite la carga de partes de un aplicación compilada por separado. Permite a la aplicación de angular cargar módulos de otra aplicación en tiempo de ejecución. Estos módulos pueden ser desarrollados, probados y desplegados de forma independiente para luego integrarlos.
 
 
 ## Module Federation : Monorepo y Multirepo (Trabajaremos con monorepo)
