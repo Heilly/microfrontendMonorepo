@@ -59,7 +59,7 @@ Borrar la carpeta de node_module
 
 ### 2. Crear el proyecto en cada uno de los mf
 Implementar servicios, componentes, interfaces y rutas. Una vez terminada la implementación ir al fichero `webpack.config.js` de cada mf configurar el nombre y en el apartado de `expose`  vas a poner los módulos, rutas o componentes que quieras compartir con los otro mf.
-`module.exports = withModuleFederationPlugin({
+```module.exports = withModuleFederationPlugin({
   name: 'mfPayment',
   exposes: { 
     './Routes': './projects/mf-payment/src/app/app.routes.ts',
@@ -72,7 +72,7 @@ requiredVersion: 'auto' }),
   },
   sharedMappings: [ "@coomons-lib" ]
 });
-`
+```
 ### 3. Conectar los micrifrontend
 Ir al nivel 1: mf-shell. Ir al fichero `webpack.config.js`
 
@@ -91,14 +91,14 @@ Ir al nivel 1: mf-shell. Ir al fichero `webpack.config.js`
 });
 ```
 Crear un fichero `custom.d.ts`
-`declare module 'mfShopping/*';
+```declare module 'mfShopping/*';
 declare module 'mfPayment/*';
-`
+```
 Cuando utilizas ``declare module``, estás creando una declaración de tipo ambiental en TypeScript para decirle al compilador que existe un módulo con ese nombre.
 
 En el `app.routes.ts` definir las rutas de los mf
 
-`export const routes: Routes = [
+```export const routes: Routes = [
     {
         path:'',
         loadChildren:() => import('mfShopping/Routes').then( r => r.routesMfShopping)
@@ -108,7 +108,7 @@ En el `app.routes.ts` definir las rutas de los mf
         loadChildren:() => import('mfPayment/Routes').then( r => r.routesmfPayment)
     },
 ];
-`
+```
 
 Listo con esto podríamos levantar el proyecto y debe funcionar. Hay que recordar que hay que levantar cada proyecto de manera independiente 
 `ng s mf-shell`
@@ -120,27 +120,25 @@ Permite compartir entre diferentes partes de tu aplicación Angular. Para realiz
 `ng g library commons-lib`
 
 Una vez creada ir a `package.json` y agregamos las librerías que necesitamos para trabajar. Siempre recordando que estas librerías deben de existir en la aplicación base y deben de tener la misma versión.
-` "dependencies": {
+```"dependencies": {
     "tslib": "^2.3.0",
     "rxjs": "~7.8.0"
   },
-`
+```
 Nos movemos en la terminal hasta estar dentro del project librería
 `cd .\project\commons-lib`
 `npm i`
 
 Ir a la raiz de la aplicación y en el `tsconfig.json` agregamos la librería que hemos creado
-`"compilerOptions": {
+```"compilerOptions": {
     "paths": {
       "@coomons-lib": [
         //"./dist/coomons-lib",
         "./projects/coomons-lib/src/public-api.ts" //referencia directa
       ]
     },
-`
+```
 En cada mf que quiera usar esta librería debo instanciarla en el fichero `webpack.config.js`
 `sharedMappings: [ "@coomons-lib" ]`
 Esto se hace para que la librería de angular arquitect pueda generar una instancia de la descarga e inyectarla en cada uno de los mf
 
-
-# microfrontendMonorepo
