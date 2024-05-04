@@ -36,20 +36,19 @@ creará una estructura de directorios y archivos para tu biblioteca Angular dent
 `npm install -D @angular-architects/module-federation `
 
 ### 1. Crear microfronteds
-Determinar la estructura de los micrfrontends, al mf principal de determina que es el Host y al resto de lo remote
+Determinar la estructura de los micrfrontends, al mf principal de determina que es el Host y al resto de lo remote<br>
 Estructura
-Nivel 1(Host): mf-shell
-Nivel 2(Remote): mf-shopping, mf-payment
-Novel 3: commons-lib
+* Nivel 1(Host): mf-shell
+* Nivel 2(Remote): mf-shopping, mf-payment
+* Nivel 3: commons-lib
 
-Host
+Host:
 `ng add @angular-architects/module-federation --project mf-shell --port 4200 --type host`
 
-Remote
+Remote:
 `ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote`
 
-
-Librería
+Librería:
 `ng g library commons-lib`
 
 En caso de que muestre error: 
