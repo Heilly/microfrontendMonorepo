@@ -6,7 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "mf-shell": "ng s mf-shell",
+    "mf-shopping": "ng s mf-shopping",
+    "mf-payment": "ng s mf-payment",
+    "all": "npm-run-all --parallel mf-payment mf-shopping mf-shell "
   },
   "private": true,
   "dependencies": {
@@ -18,11 +23,14 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "npm-run-all": "^4.1.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
+    "@angular-architects/module-federation": "^17.0.8",
+    "@angular-devkit/build-angular": "^17.0.6",
     "@angular/cli": "^17.0.6",
     "@angular/compiler-cli": "^17.0.0",
     "@types/jasmine": "~5.1.0",
@@ -32,6 +40,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^17.0.0",
+    "ngx-build-plus": "^17.0.0",
     "typescript": "~5.2.2"
   }
 }
