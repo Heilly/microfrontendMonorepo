@@ -90,7 +90,8 @@ Ir al nivel 1: mf-shell. Ir al fichero `webpack.config.js`
 });
 ```
 Crear un fichero `custom.d.ts`
-```declare module 'mfShopping/*';
+```
+declare module 'mfShopping/*';
 declare module 'mfPayment/*';
 ```
 Cuando utilizas ``declare module``, estás creando una declaración de tipo ambiental en TypeScript para decirle al compilador que existe un módulo con ese nombre.
