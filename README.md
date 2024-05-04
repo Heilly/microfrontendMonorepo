@@ -16,8 +16,8 @@ Microfrontend: Pequeños proyectos que van a representar parte de la lógica del
 
 
 ## Module Federation : Monorepo y Multirepo (Trabajaremos con monorepo)
-Monorepo: En un monorepo, todos los proyectos y microservicios de una organización se almacenan en un único repositorio de código fuente. Esto significa que todas las partes de la aplicación, incluidos los microfrontends, estarían en el mismo repositorio. En este caso, Module Federation se utilizaría para permitir la carga dinámica de módulos entre diferentes partes del mismo repositorio.
-Multirepo: En un multirepo, cada proyecto o microservicio se almacena en su propio repositorio de código fuente. Esto significa que cada microfrontend tendría su propio repositorio.
+* Monorepo: En un monorepo, todos los proyectos y microservicios de una organización se almacenan en un único repositorio de código fuente. Esto significa que todas las partes de la aplicación, incluidos los microfrontends, estarían en el mismo repositorio. En este caso, Module Federation se utilizaría para permitir la carga dinámica de módulos entre diferentes partes del mismo repositorio.
+* Multirepo: En un multirepo, cada proyecto o microservicio se almacena en su propio repositorio de código fuente. Esto significa que cada microfrontend tendría su propio repositorio.
 
 
 ## 1. Crear la aplicación Monorepo
