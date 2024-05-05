@@ -28,7 +28,7 @@ Microfrontend: Pequeños proyectos que van a representar parte de la lógica del
 ` ng generate application <nombre-de-tu-aplicacion>`
 Esto te permitirá crear múltiples aplicaciones dentro del mismo proyecto de monorepo de Angular. Cada aplicación tendrá su propio conjunto de archivos y directorios, lo que te permitirá desarrollar y mantener aplicaciones separadas dentro de la misma base de código.
 ### mf-shell
-Este proyecto sera nuestro contenedor de microfrontend
+Este proyecto sera nuestro contenedor de microfrontend \
 ``ng generate application mf-shell --style=scss --routing=true``
 ### mf-payment
 ``ng generate application mf-payment --style=scss``
