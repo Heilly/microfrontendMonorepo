@@ -36,12 +36,12 @@ Este proyecto sera nuestro contenedor de microfrontend \
 ``ng generate application mf-shopping --style=scss --routing=true``
 
 ## 3. Crear biblioteca para compartir funcionalidades
-Este proyecto sera de tipo librería el cual usaremos para compartir elementos entre los microfrontend
+Este proyecto sera de tipo librería el cual usaremos para compartir elementos entre los microfrontend \
 ```ng g library commons-lib```
 creará una estructura de directorios y archivos para tu biblioteca Angular dentro del proyecto. Esto incluirá archivos de código fuente TypeScript, así como archivos de configuración y pruebas. Una vez que se haya creado la biblioteca, podrás agregar componentes, servicios, directivas u otros elementos que desees compartir entre diferentes partes de tu aplicación Angular.
 
 ## 4. Activar el Module Federation
-El paquete @angular-architects/module-federation proporciona un generador personalizado. Si deseas aprender más de esta librería y arquitectura Angular visita el siguiente link: https://www.angulararchitects.io/en/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/
+El paquete @angular-architects/module-federation proporciona un generador personalizado. Si deseas aprender más de esta librería y arquitectura Angular visita el siguiente link: https://www.angulararchitects.io/en/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/ \
 ```npm install -D @angular-architects/module-federation ```
 
 ### 1. Crear microfronteds
@@ -57,7 +57,7 @@ Host:
 
 Remote:
 ``
-ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote
+ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote \
 ng add @angular-architects/module-federation --project mf-payment --port 4202 --type remote
 ``
 
