@@ -22,20 +22,30 @@ Microfrontend: Pequeños proyectos que van a representar parte de la lógica del
 
 ## 1. Crear la aplicación Monorepo
 `ng new microfrontMonoRepo --create-application=false`
-El comando ``ng new microfrontMonoRepo --create-application=false`` se utiliza para crear un nuevo proyecto Angular, pero con la opción --create-application=false, lo que significa que no se creará una aplicación Angular inicial automáticamente. Este comando solo creará la estructura de directorios y archivos necesarios para un proyecto Angular en blanco, pero sin ninguna aplicación dentro de él. 
+<br>El comando ``ng new microfrontMonoRepo --create-application=false`` se utiliza para crear un nuevo proyecto Angular, pero con la opción --create-application=false, lo que significa que no se creará una aplicación Angular inicial automáticamente. Este comando solo creará la estructura de directorios y archivos necesarios para un proyecto Angular en blanco, pero sin ninguna aplicación dentro de él. 
 
 ## 2. Crear microfrontends
 ` ng generate application <nombre-de-tu-aplicacion>`
 Esto te permitirá crear múltiples aplicaciones dentro del mismo proyecto de monorepo de Angular. Cada aplicación tendrá su propio conjunto de archivos y directorios, lo que te permitirá desarrollar y mantener aplicaciones separadas dentro de la misma base de código.
+### mf-shell
+Este proyecto sera nuestro contenedor de microfrontend
+``ng generate application mf-shell --style=scss --routing=true``
+### mf-payment
+``ng generate application mf-payment --style=scss``
+### mf-shopping
+``ng generate application mf-shopping --style=scss --routing=true``
 
 ## 3. Crear biblioteca para compartir funcionalidades
-`ng g library commons-lib`
+Este proyecto sera de tipo librería el cual usaremos para compartir elementos entre los microfrontend
+```ng g library commons-lib```
 creará una estructura de directorios y archivos para tu biblioteca Angular dentro del proyecto. Esto incluirá archivos de código fuente TypeScript, así como archivos de configuración y pruebas. Una vez que se haya creado la biblioteca, podrás agregar componentes, servicios, directivas u otros elementos que desees compartir entre diferentes partes de tu aplicación Angular.
 
 ## 4. Activar el Module Federation
-`npm install -D @angular-architects/module-federation `
+El paquete @angular-architects/module-federation proporciona un generador personalizado. Si deseas aprender más de esta librería y arquitectura Angular visita el siguiente link: https://www.angulararchitects.io/en/aktuelles/the-microfrontend-revolution-module-federation-in-webpack-5/
+```npm install -D @angular-architects/module-federation ```
 
 ### 1. Crear microfronteds
+Una vez instalada la librería agregaremos el uso de Module Federation a nuestros MF (microfrontends) y agregaremos unas configuraciones:
 Determinar la estructura de los micrfrontends, al mf principal de determina que es el Host y al resto de lo remote<br>
 Estructura
 * Nivel 1(Host): mf-shell
@@ -46,10 +56,14 @@ Host:
 `ng add @angular-architects/module-federation --project mf-shell --port 4200 --type host`
 
 Remote:
-`ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote`
+``
+ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote
+ng add @angular-architects/module-federation --project mf-payment --port 4202 --type remote
+``
 
 Librería:
 `ng g library commons-lib`
+Listo, lo que hara este comando es crear unos archivos webpack.config.js en cada uno de nuestros MF para poder hacer uso de la federación de modulos.
 
 En caso de que muestre error: 
 Borrar la carpeta de node_module
