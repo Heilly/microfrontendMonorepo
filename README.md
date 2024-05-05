@@ -21,19 +21,19 @@ Microfrontend: Pequeños proyectos que van a representar parte de la lógica del
 
 
 ## 1. Crear la aplicación Monorepo
-`ng new microfrontMonoRepo --create-application=false`
+```ng new microfrontMonoRepo --create-application=false```
 <br>El comando ``ng new microfrontMonoRepo --create-application=false`` se utiliza para crear un nuevo proyecto Angular, pero con la opción --create-application=false, lo que significa que no se creará una aplicación Angular inicial automáticamente. Este comando solo creará la estructura de directorios y archivos necesarios para un proyecto Angular en blanco, pero sin ninguna aplicación dentro de él. 
 
 ## 2. Crear microfrontends
-` ng generate application <nombre-de-tu-aplicacion>`
+``` ng generate application <nombre-de-tu-aplicacion>```
 Esto te permitirá crear múltiples aplicaciones dentro del mismo proyecto de monorepo de Angular. Cada aplicación tendrá su propio conjunto de archivos y directorios, lo que te permitirá desarrollar y mantener aplicaciones separadas dentro de la misma base de código.
 ### mf-shell
 Este proyecto sera nuestro contenedor de microfrontend \
-``ng generate application mf-shell --style=scss --routing=true``
+```ng generate application mf-shell --style=scss --routing=true```
 ### mf-payment
-``ng generate application mf-payment --style=scss``
+```ng generate application mf-payment --style=scss```
 ### mf-shopping
-``ng generate application mf-shopping --style=scss --routing=true``
+```ng generate application mf-shopping --style=scss --routing=true```
 
 ## 3. Crear biblioteca para compartir funcionalidades
 Este proyecto sera de tipo librería el cual usaremos para compartir elementos entre los microfrontend \
@@ -53,25 +53,25 @@ Estructura
 * Nivel 3: commons-lib
 
 Host:
-`ng add @angular-architects/module-federation --project mf-shell --port 4200 --type host`
+```ng add @angular-architects/module-federation --project mf-shell --port 4200 --type host```
 
 Remote:
 ```
-ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote \
+ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote 
 ng add @angular-architects/module-federation --project mf-payment --port 4202 --type remote
 ```
 
 Librería:
-`ng g library commons-lib`
+```ng g library commons-lib```
 Listo, lo que hara este comando es crear unos archivos webpack.config.js en cada uno de nuestros MF para poder hacer uso de la federación de modulos.
 
 En caso de que muestre error: 
 Borrar la carpeta de node_module
-`npm cache clean --force`
-`npm i`
+```npm cache clean --force```
+```npm i```
 
 ### 2. Crear el proyecto en cada uno de los mf
-Implementar servicios, componentes, interfaces y rutas. Una vez terminada la implementación ir al fichero `webpack.config.js` de cada mf configurar el nombre y en el apartado de `expose`  vas a poner los módulos, rutas o componentes que quieras compartir con los otro mf.
+Implementar servicios, componentes, interfaces y rutas. Una vez terminada la implementación ir al fichero `webpack.config.js` de cada mf configurar el nombre y en el apartado de `exposes`  vas a poner los módulos, rutas o componentes que quieras compartir con los otro mf.
 ```module.exports = withModuleFederationPlugin({
   name: 'mfPayment',
   exposes: { 
@@ -125,13 +125,13 @@ En el `app.routes.ts` definir las rutas de los mf
 ```
 
 Listo con esto podríamos levantar el proyecto y debe funcionar. Hay que recordar que hay que levantar cada proyecto de manera independiente 
-`ng s mf-shell`
-`ng s mf-shopping`
+```ng s mf-shell```
+```ng s mf-shopping```
 
 ## 5. Crear librerias
 Permite compartir entre diferentes partes de tu aplicación Angular. Para realizar un canal de comunicación trabajamos con servicios.
 
-`ng g library commons-lib`
+```ng g library commons-lib```
 
 Una vez creada ir a `package.json` y agregamos las librerías que necesitamos para trabajar. Siempre recordando que estas librerías deben de existir en la aplicación base y deben de tener la misma versión.
 ```"dependencies": {
@@ -140,8 +140,8 @@ Una vez creada ir a `package.json` y agregamos las librerías que necesitamos pa
   },
 ```
 Nos movemos en la terminal hasta estar dentro del project librería
-`cd .\project\commons-lib`
-`npm i`
+```cd .\project\commons-lib```
+```npm i```
 
 Ir a la raiz de la aplicación y en el `tsconfig.json` agregamos la librería que hemos creado
 ```"compilerOptions": {
@@ -157,16 +157,15 @@ En cada mf que quiera usar esta librería debo instanciarla en el fichero `webpa
 Esto se hace para que la librería de angular arquitect pueda generar una instancia de la descarga e inyectarla en cada uno de los mf
 
 ## 6. Despliegue de multiples proyectos
-``npm i npm-run-all``
+```npm i npm-run-all```
 
 Ir al `package.json` y añadir nuevos scripts
 
-``
+```
 "mf-shell": "ng s mf-shell", 
 "mf-shopping": "ng s mf-shopping", 
 "mf-payment": "ng s mf-payment", 
 "all": "npm-run-all --parallel mf-payment mf-shopping mf-shell "
-``
-
-Ejecutar `npm run all`
+```
+Ejecutar ```npm run all```
 
