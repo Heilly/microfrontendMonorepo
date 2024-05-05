@@ -56,10 +56,10 @@ Host:
 `ng add @angular-architects/module-federation --project mf-shell --port 4200 --type host`
 
 Remote:
-``
+```
 ng add @angular-architects/module-federation --project mf-shopping --port 4201 --type remote \
 ng add @angular-architects/module-federation --project mf-payment --port 4202 --type remote
-``
+```
 
 Librería:
 `ng g library commons-lib`
